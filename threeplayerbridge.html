@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      body, input, div, button{
+        font-size: 44px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <center>
+    <container>
+    <div id="handsCount"></div><br>
+
+
+    Put your hand's score here:<input type="password" id="input" size="2"><br><br>
+    <button onclick="submit()">Click here to submit your score.</button><br><br>
+
+    <div id="dummyPoints"></div>
+    <button onclick="showDummyPoints()">Click to show the Dummy Points</button><br><br>
+
+    <button onclick="clickToClearPoints()">Click to clear the points</button>
+
+    </container>
+    </center>
+  </body>
+<script>
+  totalpoints = 40;
+  handsToInput = 3;
+  function submit(){
+
+    totalpoints -= document.getElementById("input").value;
+    handsToInput -= 1;
+    document.getElementById("input").value = "";
+    alert("your score has been submitted");
+  }
+
+  function showDummyPoints(){
+    if(handsToInput == 0){
+      document.getElementById("dummyPoints").innerHTML = totalpoints;
+    } else if(handsToInput < 0){
+      document.getElementById("dummyPoints").innerHTML = "You input too many hands! We're gonna clear the hands, and you must start over.";
+      clickToClearPoints();
+    } else{
+      document.getElementById("dummyPoints").innerHTML = "You must input "+ handsToInput + " more hands.";
+
+    }
+  }
+  function clickToClearPoints(){
+    totalpoints = 40;
+    handsToInput = 3;
+  }
+
+
+</script>
+
+</html>
